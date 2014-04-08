@@ -6,7 +6,8 @@ for lib in src/avutil52 src/avcodec54 src/avcodec55 \
            src/avformat54 src/avformat55 src/avfilter3 src/avfilter4 \
            src/avdevice54 src/avdevice55 src/swresample0 src/swscale2; do
     echo Building $lib ...
-    rustc -L lib --out-dir lib $lib/lib.rs || exit 1
+    rustc -L lib --out-dir lib $lib/lib.rs --crate-type dylib || exit 1
+    rustc -L lib --out-dir lib $lib/lib.rs --crate-type rlib  || exit 1
 done
 
 echo Building rust-ffmpeg ...
